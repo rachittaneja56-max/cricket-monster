@@ -262,6 +262,64 @@
     @media(max-width:680px){.header{height:70px}.hero{padding-top:10px}.hero-copy{padding:42px 26px 32px}.hero h1{font-size:clamp(47px,10.8vw,70px);line-height:.99}.hero-description{font-size:16px;margin:20px 0 22px}.hero-actions .button{min-height:44px}.hero-media{min-height:424px}.hero-photo{background-position:center 34%}.photo-kicker{top:21px;left:21px}.match-teaser{left:14px;right:14px;bottom:14px;width:auto;padding:17px 15px 14px}.match-teaser h2{font-size:28px;margin-bottom:13px}.match-teaser .team-pick{min-height:57px;padding:9px 8px;gap:8px}.match-teaser .team-pick[aria-pressed="true"]{padding:9px 8px}.match-teaser .team-mark{width:30px;height:30px;font-size:12px}.match-teaser .team-radio{display:none}.match-teaser .pick-note{font-size:11px}.team-copy strong{font-size:13px}.team-copy small{display:none}.match-teaser .demo-mark{font-size:8px;letter-spacing:0}.section{padding:60px 0 59px}.section-heading{font-size:clamp(40px,10vw,55px);margin:18px 0 26px}.feature-card{min-height:394px;padding:25px}.feature-card h3{font-size:38px}.feed-preview{padding:17px}.banner{margin-bottom:12px;min-height:238px;padding:34px 26px}.banner h2{font-size:43px}}
     @media(max-width:680px){.hero-actions .button-outline{display:none}.hero-actions .button-lime{width:100%;justify-content:space-between}.match-teaser .team-pick[aria-pressed="true"]::after{display:block;content:"✓";color:var(--lime);font-size:16px;margin-left:auto}}
     @media(max-width:355px){.hero h1{font-size:45px}.hero-actions .button{width:100%;justify-content:center}.hero-media{min-height:418px}.match-teaser{left:10px;right:10px}.match-teaser .team-pick{padding:8px 6px}.match-teaser .team-pick[aria-pressed="true"]{padding:8px 6px}.team-copy strong{font-size:12px}.match-teaser h2{font-size:26px}}
+
+    /* v5 — single editorial composition. Prediction is a natural part of the page, never over the stadium. */
+    :root{--warm:#f1f3eb;--hero-line:#c8d5c6}
+    .hero{padding-top:16px}
+    .hero-shell.hero-v5{display:grid;grid-template-columns:55% 45%;min-height:675px;overflow:hidden;background:var(--warm);border:1px solid #d6dfd3;border-radius:5px;color:var(--ink)}
+    .hero-v5 .hero-copy{padding:54px clamp(35px,4.2vw,68px) 41px clamp(35px,4.7vw,75px);display:flex;justify-content:center;align-items:flex-start;gap:0}
+    .hero-v5 .hero-label{color:var(--field);font-size:11px;letter-spacing:.13em;margin:0 0 23px;font-weight:750}
+    .hero-v5 .hero-label::before{background:var(--field);width:22px}
+    .hero-v5 h1{color:var(--forest);font-family:var(--display);font-size:clamp(57px,5.15vw,79px);font-weight:700;line-height:.96;letter-spacing:-.028em;max-width:690px;text-transform:none;margin:0}
+    .hero-v5 h1 span{display:inline;color:var(--field);white-space:normal}
+    .hero-v5 .hero-description{font-size:17px;line-height:1.5;max-width:480px;color:#4d6255;margin:21px 0 19px}
+    .hero-v5 .hero-actions{gap:21px;margin-bottom:31px}
+    .hero-v5 .hero-actions .button{border-radius:4px;min-height:45px;font-size:14px}
+    .hero-quiz-link{color:var(--forest);padding:10px 0!important;border:0;background:none;border-radius:0!important;border-bottom:1px solid #8aa18e!important;min-height:45px!important;font-weight:700}
+    .hero-quiz-link:hover{color:var(--field);transform:none;border-color:var(--field)!important}
+    .hero-quiz-link span{font-size:16px}
+    .hero-pick{width:100%;scroll-margin-top:115px;max-width:603px;border-top:1px solid var(--hero-line);padding:20px 0 0;color:var(--ink)}
+    .hero-pick .pick-top{margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .hero-pick .pick-type{display:inline-flex;gap:8px;align-items:center;font-size:10px;letter-spacing:.12em;color:var(--field)}
+    .hero-pick .match-status-dot{background:var(--field);width:6px;height:6px}
+    .hero-pick .demo-mark{border:1px solid #c7d5c6;font-size:9px;font-weight:700;color:#526d5b;padding:5px 8px;border-radius:2px;letter-spacing:.09em}
+    .hero-pick h2{font-family:var(--display);font-size:29px;line-height:1.04;font-weight:700;letter-spacing:-.015em;margin:0 0 13px;text-transform:none}
+    .hero-pick .versus{gap:12px}
+    .hero-pick .team-pick{flex:1;min-width:0;min-height:58px;display:flex;align-items:center;gap:12px;border:1px solid #c5d2c3;border-radius:4px;padding:10px 13px;background:#fff;color:var(--forest);text-align:left;font-weight:700;transition:background .18s,border-color .18s,box-shadow .18s}
+    .hero-pick .team-pick:hover{border-color:var(--field);background:#fbfcf6}
+    .hero-pick .team-pick[aria-pressed="true"]{background:#e0ebd3;border:2px solid var(--field);padding:9px 12px}
+    .hero-pick .team-pick[aria-pressed="true"]::after{display:none}
+    .hero-pick .team-mark{height:34px;width:34px;flex-shrink:0;border:1px solid #9db69e;display:grid;place-items:center;border-radius:50%;font:750 14px var(--display);color:var(--field)}
+    .hero-pick .team-copy{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1}
+    .hero-pick .team-copy strong{font-size:14px;line-height:1.2;color:var(--ink)}
+    .hero-pick .team-copy small{color:#667b6a;font-size:11px;font-weight:500}
+    .hero-pick .vs{color:#6f8575;font-weight:750;font-size:12px;font-family:var(--display)}
+    .hero-pick .team-radio{width:16px;height:16px;flex:0 0 16px;border:1px solid #99b09d;border-radius:50%;position:relative}
+    .hero-pick .team-pick[aria-pressed="true"] .team-radio{border-color:var(--field);background:var(--field)}
+    .hero-pick .team-pick[aria-pressed="true"] .team-radio::after{content:'✓';position:absolute;top:-3px;left:2px;color:white;font-size:12px}
+    .hero-pick .pick-note{border:0;margin:10px 0 0;padding:0;color:#62796b;min-height:0;display:flex;gap:8px;align-items:center;line-height:1.4;font-size:12px}
+    .hero-pick .note-icon{height:18px;width:18px;border-radius:50%;background:#dbe8d3;flex:0 0 18px;font:750 11px var(--body);color:var(--field)}
+    .hero-v5 .hero-media{height:100%;min-height:675px;background-color:#173b29;background-position:center center}
+    .hero-v5 .hero-photo{opacity:1;filter:saturate(.98);background-size:cover;background-position:center 52%;background-image:linear-gradient(180deg,transparent 67%,rgba(7,32,19,.50) 100%),url('https://images.unsplash.com/photo-1750716413381-1c9a0d94db84?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=70&w=1800')}
+    .hero-v5 .hero-media::after{background:linear-gradient(0deg,rgba(9,27,17,.48),transparent 24%)}
+    .hero-media-caption{position:absolute;z-index:3;bottom:27px;left:30px;display:flex;gap:13px;align-items:flex-start;color:#f1f5ec;font-size:10px;letter-spacing:.1em;font-weight:700;line-height:1.8;text-shadow:0 1px 8px #0008}
+    .hero-media-caption strong{font-family:var(--display);font-size:21px;letter-spacing:0;font-weight:650;text-transform:none}
+    .caption-rule{height:35px;width:3px;background:var(--lime);margin-top:4px}
+    .hero-v5 .team-pick:focus-visible{outline:3px solid var(--field);outline-offset:3px}
+    @media(max-width:1200px){.hero-shell.hero-v5{grid-template-columns:57% 43%;min-height:630px}.hero-v5 h1{font-size:clamp(55px,5.1vw,68px)}.hero-v5 .hero-copy{padding:39px 32px 32px}.hero-v5 .hero-media{min-height:630px}.hero-v5 .hero-description{font-size:16px}}
+    @media(max-width:950px){.hero-shell.hero-v5{grid-template-columns:1fr;min-height:0}.hero-v5 .hero-copy{padding:54px 48px 42px}.hero-v5 h1{font-size:clamp(57px,7vw,78px);max-width:700px}.hero-v5 .hero-media{min-height:390px}.hero-v5 .hero-pick{max-width:610px}.hero-v5 .hero-actions{margin-bottom:27px}}
+    @media(max-width:680px){.hero{padding-top:10px}.hero-shell.hero-v5{display:flex;flex-direction:column;border-radius:4px}.hero-v5 .hero-copy{padding:35px 22px 31px}.hero-v5 .hero-label{font-size:9px;letter-spacing:.085em;margin-bottom:20px}.hero-v5 h1{font-size:clamp(46px,10.8vw,66px);line-height:.95}.hero-v5 .hero-description{font-size:15.5px;line-height:1.48;margin:19px 0 17px}.hero-v5 .hero-actions{gap:16px;margin-bottom:26px;flex-wrap:wrap}.hero-v5 .hero-actions .button{font-size:13px}.hero-v5 .hero-pick{padding-top:16px}.hero-pick h2{font-size:27px;margin-bottom:11px}.hero-pick .team-pick{gap:8px;padding:9px 8px;min-height:57px}.hero-pick .team-pick[aria-pressed="true"]{padding:8px 7px}.hero-pick .team-mark{width:29px;height:29px;font-size:12px}.hero-pick .team-copy strong{font-size:13px}.hero-pick .team-radio{display:none}.hero-pick .team-pick[aria-pressed="true"]::after{display:block;font-size:16px;color:var(--field);content:'✓';margin-left:auto}.hero-pick .pick-note{font-size:11px}.hero-pick .demo-mark{font-size:8px;white-space:nowrap}.hero-v5 .hero-media{min-height:260px;height:260px}.hero-v5 .hero-photo{background-position:50% 55%}.hero-media-caption{left:21px;bottom:18px;font-size:9px}.hero-media-caption strong{font-size:18px}}
+    @media(max-width:355px){.hero-v5 .hero-copy{padding:28px 17px}.hero-v5 h1{font-size:43px}.hero-pick .team-copy small{display:none}.hero-pick .team-pick{padding:8px 6px;gap:6px}.hero-pick .team-pick[aria-pressed="true"]{padding:7px 5px}.hero-pick .team-copy strong{font-size:12px}.hero-v5 .hero-actions{gap:10px}.hero-v5 .hero-actions .button{padding:10px 14px}}
+
+    /* Keep the stadium visible earlier on phones; the picks are a separate, integrated block, not an overlay. */
+    .hero-shell.hero-v5{grid-template-rows:minmax(0,1fr) auto}
+    .hero-v5 .hero-copy{grid-column:1;grid-row:1;padding-bottom:10px;justify-content:flex-end}
+    .hero-v5 .hero-pick{grid-column:1;grid-row:2;margin:0 clamp(35px,4.2vw,68px) 42px clamp(35px,4.7vw,75px)}
+    .hero-v5 .hero-media{grid-column:2;grid-row:1 / span 2;height:100%;min-height:675px}
+    @media(max-width:1200px){.hero-v5 .hero-pick{margin-left:32px;margin-right:32px;margin-bottom:32px}.hero-v5 .hero-media{min-height:630px}}
+    @media(max-width:950px){.hero-shell.hero-v5{display:flex;flex-direction:column}.hero-v5 .hero-copy{order:1;justify-content:flex-start;padding-bottom:40px}.hero-v5 .hero-media{order:2;height:355px;min-height:355px}.hero-v5 .hero-pick{order:3;width:auto;max-width:none;margin:0 48px 40px;padding-top:22px}}
+    @media(max-width:680px){.hero-v5 .hero-copy{padding-bottom:29px}.hero-v5 .hero-media{height:238px;min-height:238px}.hero-v5 .hero-pick{margin:0 22px 29px;padding-top:17px}.hero-media-caption{bottom:12px}.hero-v5 .hero-actions{margin-bottom:0}}
+    @media(max-width:355px){.hero-v5 .hero-pick{margin-left:17px;margin-right:17px}}
   </style>
 </head>
 <body>
@@ -287,36 +345,36 @@
   </header>
   <main>
     <div class="container hero" id="home">
-      <section class="hero-shell" aria-labelledby="hero-title">
+      <section class="hero-shell hero-v5" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <div class="eyebrow hero-label">A GOOD DAY FOR CRICKET</div>
-          <h1 id="hero-title"><span>Don’t just</span><span>watch cricket.</span><span class="your-call">Have a say.</span></h1>
-          <p class="hero-description">Back your team before the first ball. Take the daily quiz. Stay for the conversations that follow.</p>
+          <div class="eyebrow hero-label">MATCHES · QUIZZES · CONVERSATIONS</div>
+          <h1 id="hero-title">Don’t just watch cricket. <span>Have a say.</span></h1>
+          <p class="hero-description">The next match is more fun when you've called it. Make a pick, test your cricket knowledge and join the conversation.</p>
           <div class="hero-actions">
-            <a href="#match-preview" class="button button-lime">Make your pick <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
-            <a href="#experiences" class="button button-outline">Explore Cricket.Monster</a>
+            <a href="#match-preview" class="button button-dark">Make a pick <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
+            <button type="button" class="button hero-quiz-link" id="heroTryQuiz">Try the daily quiz <span aria-hidden="true">↗</span></button>
           </div>
+
         </div>
-        <div class="hero-media" aria-label="Cricket stadium at night">
+        <div class="hero-media" role="img" aria-label="Floodlit cricket ground during an evening match">
           <div class="hero-photo" aria-hidden="true"></div>
-          <div class="photo-kicker">THE GAME, FROM EVERY ANGLE</div>
-          <div class="pick-card match-teaser" id="match-preview" aria-labelledby="match-teaser-title">
-            <div class="pick-top"><span class="pick-type"><span class="match-status-dot" aria-hidden="true"></span> MATCH MONSTER</span><span class="demo-mark">INTERACTIVE PREVIEW</span></div>
-            <div class="match-context">A match. Two teams. One call.</div>
-            <h2 id="match-teaser-title">Who takes the win?</h2>
-            <div class="versus" role="group" aria-label="Preview a match winner prediction">
-              <button type="button" class="team-pick" data-team="Mumbai" aria-pressed="false"><span class="team-mark">MI</span><span class="team-copy"><strong>Mumbai</strong><small>Back this team</small></span><span class="team-radio" aria-hidden="true"></span></button>
-              <span class="vs" aria-hidden="true">VS</span>
-              <button type="button" class="team-pick" data-team="Chennai" aria-pressed="false"><span class="team-mark">CSK</span><span class="team-copy"><strong>Chennai</strong><small>Back this team</small></span><span class="team-radio" aria-hidden="true"></span></button>
-            </div>
-            <div class="pick-note" aria-live="polite"><span class="note-icon" aria-hidden="true">↗</span><span id="pickStatus">Choose a side to try it. This is a preview, not a real pick.</span></div>
-          </div>
+          <div class="hero-media-caption"><span class="caption-rule"></span><span>EVERY INNINGS HAS A STORY<br><strong>Be part of the next one.</strong></span></div>
         </div>
+          <div class="hero-pick" id="match-preview" aria-labelledby="match-teaser-title">
+            <div class="pick-top"><span class="pick-type"><span class="match-status-dot" aria-hidden="true"></span> MATCH MONSTER · DEMO</span><span class="demo-mark">PRACTICE PICK</span></div>
+            <h2 id="match-teaser-title">Who are you backing?</h2>
+            <div class="versus" role="group" aria-label="Try a sample match winner prediction">
+              <button type="button" class="team-pick" data-team="Mumbai" aria-pressed="false"><span class="team-mark" aria-hidden="true">MI</span><span class="team-copy"><strong>Mumbai</strong><small>Choose team</small></span><span class="team-radio" aria-hidden="true"></span></button>
+              <span class="vs" aria-hidden="true">VS</span>
+              <button type="button" class="team-pick" data-team="Chennai" aria-pressed="false"><span class="team-mark" aria-hidden="true">CSK</span><span class="team-copy"><strong>Chennai</strong><small>Choose team</small></span><span class="team-radio" aria-hidden="true"></span></button>
+            </div>
+            <p class="pick-note" aria-live="polite"><span class="note-icon" aria-hidden="true">i</span><span id="pickStatus">Try a pick. No account or real submission needed.</span></p>
+          </div>
       </section>
     </div>
     <section class="container section" id="experiences" aria-labelledby="section-heading">
       <div class="section-top"><span class="eyebrow">THE REST OF YOUR CRICKET DAY</span><span class="right-note">THE DAILY QUIZ  /  THE FAN FEED</span></div>
-      <h2 class="section-heading" id="section-heading">The match is only<br><em>the beginning.</em></h2>
+      <h2 class="section-heading" id="section-heading">More than the<br><em>final score.</em></h2>
       <div class="experiences">
         <article class="feature-card" id="daily-monster">
           <div class="feature-header"><span class="number">02</span><span>DAILY MONSTER</span></div>
@@ -361,7 +419,9 @@
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Open menu');}));
     const buttons=[...document.querySelectorAll('.team-pick')];const status=document.getElementById('pickStatus');
     buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));status.textContent=`${button.dataset.team} is your pick for this demo. Nothing has been submitted.`;}));
-    document.getElementById('tryQuiz').addEventListener('click',()=>{const d=document.getElementById('quizDialog');document.querySelectorAll('#quizOptions button').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});document.getElementById('quizResult').textContent='Choose an answer.';d.showModal()});
+    const openQuiz=()=>{const d=document.getElementById('quizDialog');document.querySelectorAll('#quizOptions button').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});document.getElementById('quizResult').textContent='Choose an answer.';d.showModal()};
+    document.getElementById('tryQuiz').addEventListener('click',openQuiz);
+    document.getElementById('heroTryQuiz').addEventListener('click',openQuiz);
     document.querySelectorAll('#quizOptions button').forEach(button=>button.addEventListener('click',()=>{const correct=button.dataset.answer==='6';document.querySelectorAll('#quizOptions button').forEach(b=>{b.disabled=true;if(b.dataset.answer==='6')b.classList.add('correct');else if(b===button)b.classList.add('wrong')});document.getElementById('quizResult').textContent=correct?'Correct! Six legal deliveries make an over.':'Not quite. A standard over has six legal deliveries.';}));
     document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).close()));
     document.getElementById('signInButton').addEventListener('click',()=>document.getElementById('signInDialog').showModal());
