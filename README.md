@@ -1,15 +1,13 @@
-# Cricket.Monster — Landing v5
+# Cricket.Monster — Cricket-first homepage experiment
 
-A responsive editorial landing-page prototype for Cricket.Monster. The stadium image is unobstructed, and the Match Monster practice pick is integrated into the content layout rather than covering the photograph.
+Standalone responsive landing page concept. Purpose: replace generic SaaS copy and empty hero blocks with sports-editorial composition, cricket imagery, and tangible Match Monster / Daily Monster / Feed interactions.
 
-## Design
-- Field & Paper palette: `#14291F`, `#21654A`, `#E0F48A`, `#F7F7F2`
-- Barlow Semi Condensed for headings; Source Sans 3 for interface text
-- Bundled original SVG cricket-ground fallback, optional attributed Unsplash photograph
-- Responsive layouts, accessible team selection, example Daily Monster quiz, feed preview and mobile navigation
+- Field & Paper palette retained.
+- New sports headline treatment: Oswald; UI: DM Sans; scoreboard metadata: IBM Plex Mono.
+- Original, locally bundled cricket-ground SVG is always available as an image fallback. Optional action photograph by Anil Sharma / Pexels, source link in footer; verify licence/branding use before commercial launch.
+- Static practice fixtures and quiz examples are explicitly marked as demonstrations; not connected to the team's CricAPI, leaderboard, or authentication.
+- Source can be served with any static web server; no build needed.
 
-## Run and deploy
-Open `index.html` or run `python -m http.server 8000`. The site is static and requires no build step. `vercel.json` sets response headers.
+## Checks
 
-## Product scope
-**Demonstration only.** Fixtures, picks, quiz and feed examples are not connected to a backend or real accounts; do not represent them as live.
+Responsive at common viewports, action buttons, keyboard navigation and graceful photo fallback should be checked before promotion to main.
