@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#14291f">
+<title>Cricket.Monster — Typography Lab (Preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@400;600;700;800&family=Chivo:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{font-family:"Source Sans 3",Arial,sans-serif;color:#14291f;background:#f7f7f2}
+*{box-sizing:border-box}
+body{margin:0}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #21654a;outline-offset:3px}
+.lab-head{position:relative;z-index:4;min-height:73px;background:#f7f7f2;border-bottom:1px solid #cbd6c9;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding:11px clamp(16px,3vw,44px)}
+.lab-title{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.lab-dot{width:10px;height:10px;border-radius:50%;background:#21654a}
+.lab-title strong{font-size:16px;letter-spacing:-.02em}
+.lab-title span{font-size:12px;color:#65786a}
+.lab-controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.lab-btn{border:1px solid #c7d5c8;background:#fff;color:#14291f;padding:9px 13px;border-radius:6px;font-weight:700;font-size:13px;min-height:38px}
+.lab-btn[aria-pressed=true]{border-color:#21654a;color:#14291f;background:#e0f48a;box-shadow:inset 0 0 0 1px #21654a}
+.lab-compare{border:0;background:#14291f;color:#fff}
+.lab-note{background:#e8eddf;padding:8px clamp(16px,3vw,44px);font-size:12px;color:#516555;border-bottom:1px solid #cfdcc9}
+#site{display:block;width:100%;height:calc(100dvh - 112px);border:0;background:#f7f7f2}
+.type-modal{border:1px solid #c7d5c8;background:#f7f7f2;color:#14291f;box-shadow:0 18px 72px #13271c66;border-radius:12px;width:min(840px,calc(100vw - 24px));padding:0}
+.type-modal::backdrop{background:#0d231bcb}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #d1decf}
+.modal-head h2{font-size:20px;margin:0;letter-spacing:-.03em}
+.modal-head button{border:1px solid #bfcfc0;border-radius:5px;background:#fff;color:#14291f;font-size:18px;width:36px;height:34px}
+.type-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:20px}
+.type-example{display:flex;flex-direction:column;text-align:left;gap:12px;min-height:180px;background:#fff;color:#14291f;border:1px solid #d4ded4;border-radius:7px;padding:17px 18px}
+.type-example:hover{border-color:#21654a}
+.type-example small{font:600 12px "Source Sans 3",sans-serif;color:#607363}
+.type-example strong{font-size:clamp(26px,3.3vw,41px);font-weight:700;line-height:1.03;letter-spacing:-.04em}
+.type-example[data-pick="original"] strong{font-family:"Barlow Semi Condensed",sans-serif}
+.type-example[data-pick="archivo"] strong{font-family:"Archivo",sans-serif}
+.type-example[data-pick="chivo"] strong{font-family:"Chivo",sans-serif}
+.type-example[data-pick="newsreader"] strong{font-family:"Newsreader",Georgia,serif;font-weight:600}
+@media(max-width:680px){
+.lab-head{padding:9px 12px;align-items:flex-start;gap:9px}
+.lab-title{gap:7px}.lab-title strong{font-size:14px}.lab-title span{font-size:11px}
+.lab-controls{width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.lab-btn{font-size:11px;min-height:36px;padding:8px 4px}
+.lab-note{font-size:10px;padding:6px 12px}
+#site{height:calc(100dvh - 132px)}
+.type-grid{grid-template-columns:1fr;padding:12px}
+.type-example{min-height:115px}
+.type-example strong{font-size:30px}
+}
+</style>
+</head>
+<body>
+<header class="lab-head">
+ <div class="lab-title"><span class="lab-dot"></span><strong>Cricket.Monster / Type Lab</strong><span>Preview branch · no changes to live site</span></div>
+ <div class="lab-controls" role="group" aria-label="Choose font direction">
+  <button type="button" class="lab-btn" data-pick="original" aria-pressed="false">Current</button>
+  <button type="button" class="lab-btn" data-pick="archivo" aria-pressed="true">Archivo</button>
+  <button type="button" class="lab-btn" data-pick="chivo" aria-pressed="false">Chivo</button>
+  <button type="button" class="lab-btn" data-pick="newsreader" aria-pressed="false">Newsreader</button>
+  <button type="button" class="lab-btn lab-compare" id="compare">Compare</button>
+ </div>
+</header>
+<div class="lab-note">Same Cricket.Monster page, same colors and interactions. Only display typography changes. Source Sans 3 stays as the readable UI font.</div>
+<iframe id="site" title="Cricket.Monster landing page with selected typography" src="./index.html"></iframe>
+<dialog id="comparator" class="type-modal" aria-label="Compare typography">
+ <div class="modal-head"><h2>One headline. Four directions.</h2><button type="button" id="close" aria-label="Close comparison">×</button></div>
+ <div class="type-grid">
+ <button class="type-example" data-pick="original"><small>Current · Barlow Semi Condensed</small><strong>Don't just watch cricket. Have a say.</strong></button>
+ <button class="type-example" data-pick="archivo"><small>Editorial · Archivo</small><strong>Don't just watch cricket. Have a say.</strong></button>
+ <button class="type-example" data-pick="chivo"><small>Matchday · Chivo</small><strong>Don't just watch cricket. Have a say.</strong></button>
+ <button class="type-example" data-pick="newsreader"><small>Journal · Newsreader</small><strong>Don't just watch cricket. Have a say.</strong></button>
+ </div>
+</dialog>
+<script>
+(()=>{
+ const frame=document.getElementById("site");
+ const dialog=document.getElementById("comparator");
+ const settings={
+  original:{face:'"Barlow Semi Condensed", "Arial Narrow",sans-serif',hero:'clamp(57px,5.15vw,79px)',small:'clamp(47px,10.8vw,66px)',heading:'clamp(45px,4.9vw,69px)',card:'clamp(36px,3.15vw,46px)',weight:700},
+  archivo:{face:'"Archivo",Arial,sans-serif',hero:'clamp(52px,4.9vw,74px)',small:'clamp(40px,9.4vw,61px)',heading:'clamp(40px,4.5vw,60px)',card:'clamp(30px,3vw,43px)',weight:750},
+  chivo:{face:'"Chivo",Arial,sans-serif',hero:'clamp(50px,4.65vw,71px)',small:'clamp(38px,9vw,58px)',heading:'clamp(38px,4.3vw,58px)',card:'clamp(30px,2.9vw,42px)',weight:750},
+  newsreader:{face:'"Newsreader",Georgia,serif',hero:'clamp(57px,5.6vw,82px)',small:'clamp(44px,10.3vw,70px)',heading:'clamp(45px,5vw,68px)',card:'clamp(35px,3.6vw,50px)',weight:600}
+ };
+ let active=(new URLSearchParams(location.search)).get("font");
+ if(!settings[active])active="archivo";
+ let loaded=false;
+ function apply(name){
+  if(!settings[name])return;
+  active=name;
+  for(const btn of document.querySelectorAll('.lab-controls [data-pick]'))btn.setAttribute("aria-pressed",String(btn.dataset.pick===name));
+  const doc=frame.contentDocument;
+  if(!doc||!doc.head)return;
+  const o=settings[name];
+  let style=doc.getElementById("font-lab-css");
+  if(!style){style=doc.createElement("style");style.id="font-lab-css";doc.head.appendChild(style)}
+  style.textContent=
+    ':root{--display:'+o.face+'!important}'+
+    '.hero-v5 h1{font-family:var(--display)!important;font-size:'+o.hero+'!important;line-height:1.055!important;letter-spacing:-.045em!important;font-weight:'+o.weight+'!important}'+
+    '.section-heading{font-family:var(--display)!important;font-size:'+o.heading+'!important;line-height:1.085!important;letter-spacing:-.038em!important;font-weight:'+o.weight+'!important}'+
+    '.feature-card h3{font-family:var(--display)!important;font-size:'+o.card+'!important;line-height:1.1!important;letter-spacing:-.035em!important;font-weight:'+o.weight+'!important}'+
+    '.hero-pick h2,.banner h2,.logo-title{font-family:var(--display)!important;font-weight:'+o.weight+'!important}'+
+    (name==='newsreader'?'.hero-v5 h1 span{font-style:italic}.logo-title{font-family:"Archivo",sans-serif!important}':'')+
+    '@media(max-width:680px){.hero-v5 h1{font-size:'+o.small+'!important}.logo-title{font-size:19px!important}}'+
+    '@media(max-width:355px){.hero-v5 h1{font-size:38px!important}}';
+  const url=new URL(location.href);url.searchParams.set("font",name);history.replaceState({}, "",url);
+ }
+ frame.addEventListener("load",()=>{
+  const doc=frame.contentDocument;
+  if(!doc)return;
+  if(!doc.getElementById("font-lab-import")){
+    const link=doc.createElement("link");link.id="font-lab-import";link.rel="stylesheet";
+    link.href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Chivo:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700&display=swap";
+    doc.head.appendChild(link);
+  }
+  loaded=true;apply(active);
+ });
+ document.querySelectorAll('[data-pick]').forEach(btn=>btn.addEventListener("click",()=>{active=btn.dataset.pick;if(loaded)apply(active);if(dialog.open)dialog.close()}));
+ document.getElementById("compare").addEventListener("click",()=>dialog.showModal());
+ document.getElementById("close").addEventListener("click",()=>dialog.close());
+ dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});
+})();
+</script>
+</body>
+</html>
