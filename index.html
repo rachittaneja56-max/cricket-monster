@@ -320,6 +320,29 @@
     @media(max-width:950px){.hero-shell.hero-v5{display:flex;flex-direction:column}.hero-v5 .hero-copy{order:1;justify-content:flex-start;padding-bottom:40px}.hero-v5 .hero-media{order:2;height:355px;min-height:355px}.hero-v5 .hero-pick{order:3;width:auto;max-width:none;margin:0 48px 40px;padding-top:22px}}
     @media(max-width:680px){.hero-v5 .hero-copy{padding-bottom:29px}.hero-v5 .hero-media{height:238px;min-height:238px}.hero-v5 .hero-pick{margin:0 22px 29px;padding-top:17px}.hero-media-caption{bottom:12px}.hero-v5 .hero-actions{margin-bottom:0}}
     @media(max-width:355px){.hero-v5 .hero-pick{margin-left:17px;margin-right:17px}}
+
+    /* v6 — straightforward product names and useful copy, not numbered design labels. */
+    .hero-v5 .hero-copy{padding-top:clamp(44px,4.5vw,70px)}
+    .hero-v5 h1{max-width:670px}
+    .hero-v5 .hero-description{margin-top:24px}
+    .hero-pick .pick-type{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;text-transform:none;color:var(--forest)}
+    .hero-pick .demo-mark{font-family:var(--body);font-size:12px;font-weight:600;text-transform:none;letter-spacing:0;border-color:#bbcfb9;padding:4px 10px;border-radius:18px}
+    .hero-v5 .hero-media::after{background:linear-gradient(180deg,transparent 76%,rgba(9,27,17,.17) 100%)}
+    .section{padding-top:clamp(70px,7vw,98px)}
+    .section-heading{margin:0 0 34px;max-width:700px}
+    .feature-header{font-family:var(--display);font-size:23px;line-height:1.15;font-weight:700;letter-spacing:-.008em;text-transform:none;color:var(--field);gap:0}
+    .feature-card h3{margin-top:21px;font-size:clamp(36px,3.15vw,46px);line-height:1.04;font-weight:700;text-transform:none;max-width:420px}
+    .feature-card p{line-height:1.5}
+    .feed-category{font-size:11px;font-weight:600;text-transform:none;letter-spacing:0}
+    .feed-preview .meta{font-size:12px;color:#64766a}
+    .daily-topline{letter-spacing:0;text-transform:none;font-size:13px;font-weight:600}
+    .daily-middle small{letter-spacing:0;text-transform:none;font-size:12px;font-weight:600}
+    .section-call{font-size:13px;color:#667a6b;padding-top:17px}
+    .banner h2{font-weight:700;text-transform:none;letter-spacing:-.02em}
+    .quiz-dialog-name{font-family:var(--display);font-size:21px;font-weight:700;color:var(--field)}
+    .modal-inner h2{font-weight:700;text-transform:none;line-height:1.1}
+    @media(max-width:950px){.hero-v5 .hero-copy{padding-top:44px}}
+    @media(max-width:680px){.hero-v5 .hero-copy{padding-top:37px}.section-heading{margin-bottom:26px}.feature-header{font-size:21px}.feature-card h3{font-size:clamp(32px,8.8vw,39px);margin-top:17px}.hero-pick .pick-type{font-size:18px}.hero-pick .demo-mark{font-size:11px}.section-call{font-size:12px}.banner h2{font-size:clamp(38px,10vw,44px)}}
   </style>
 </head>
 <body>
@@ -347,7 +370,6 @@
     <div class="container hero" id="home">
       <section class="hero-shell hero-v5" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <div class="eyebrow hero-label">MATCHES · QUIZZES · CONVERSATIONS</div>
           <h1 id="hero-title">Don’t just watch cricket. <span>Have a say.</span></h1>
           <p class="hero-description">The next match is more fun when you've called it. Make a pick, test your cricket knowledge and join the conversation.</p>
           <div class="hero-actions">
@@ -358,10 +380,9 @@
         </div>
         <div class="hero-media" role="img" aria-label="Floodlit cricket ground during an evening match">
           <div class="hero-photo" aria-hidden="true"></div>
-          <div class="hero-media-caption"><span class="caption-rule"></span><span>EVERY INNINGS HAS A STORY<br><strong>Be part of the next one.</strong></span></div>
         </div>
           <div class="hero-pick" id="match-preview" aria-labelledby="match-teaser-title">
-            <div class="pick-top"><span class="pick-type"><span class="match-status-dot" aria-hidden="true"></span> MATCH MONSTER · DEMO</span><span class="demo-mark">PRACTICE PICK</span></div>
+            <div class="pick-top"><span class="pick-type">Match Monster</span><span class="demo-mark">Sample match</span></div>
             <h2 id="match-teaser-title">Who are you backing?</h2>
             <div class="versus" role="group" aria-label="Try a sample match winner prediction">
               <button type="button" class="team-pick" data-team="Mumbai" aria-pressed="false"><span class="team-mark" aria-hidden="true">MI</span><span class="team-copy"><strong>Mumbai</strong><small>Choose team</small></span><span class="team-radio" aria-hidden="true"></span></button>
@@ -373,46 +394,45 @@
       </section>
     </div>
     <section class="container section" id="experiences" aria-labelledby="section-heading">
-      <div class="section-top"><span class="eyebrow">THE REST OF YOUR CRICKET DAY</span><span class="right-note">THE DAILY QUIZ  /  THE FAN FEED</span></div>
       <h2 class="section-heading" id="section-heading">More than the<br><em>final score.</em></h2>
       <div class="experiences">
         <article class="feature-card" id="daily-monster">
-          <div class="feature-header"><span class="number">02</span><span>DAILY MONSTER</span></div>
-          <h3>A little cricket,<br>every day.</h3>
-          <p>Ten questions, three minutes, and a fresh challenge to get your cricket brain going.</p>
+          <div class="feature-header">Daily Monster</div>
+          <h3>How well do you know your cricket?</h3>
+          <p>Ten questions. Three minutes. One new quiz every day.</p>
           <button class="text-link" type="button" id="tryQuiz">Try a quiz question <span aria-hidden="true">↗</span></button>
           <div class="daily-graphic" aria-label="Daily Monster sample: ten questions in three minutes">
-            <div class="daily-topline"><span>DAILY CHALLENGE</span><span class="timer-symbol" aria-hidden="true">◷</span></div>
-            <div class="daily-middle"><span class="daily-big">10 <small>QUESTIONS</small></span><span class="daily-time">03:00 <small>ON THE CLOCK</small></span></div>
+            <div class="daily-topline"><span>A quick cricket quiz</span><span class="timer-symbol" aria-hidden="true">◷</span></div>
+            <div class="daily-middle"><span class="daily-big">10 <small>Questions</small></span><span class="daily-time">03:00 <small>Time limit</small></span></div>
             <div class="daily-progress" aria-hidden="true"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
           </div>
         </article>
         <article class="feature-card dark" id="fan-feed">
-          <div class="feature-header"><span class="number">03</span><span>FAN FEED</span></div>
-          <h3>The best part?<br>The debate.</h3>
-          <p>Reactions, match takes and the conversations that carry on long after the last ball.</p>
-          <button class="text-link" type="button" id="showFeed">See another fan take <span aria-hidden="true">↗</span></button>
+          <div class="feature-header">Fan Feed</div>
+          <h3>Everyone has an opinion.</h3>
+          <p>Share your take, hear from other fans, and keep the conversation going.</p>
+          <button class="text-link" type="button" id="showFeed">Read another take <span aria-hidden="true">↗</span></button>
           <div class="feed-preview" aria-label="Example discussion post">
             <span class="feed-avatar" aria-hidden="true">A</span>
-            <div><strong>Arjun</strong><span class="feed-category">MATCH DISCUSSION</span><div class="thread" id="feedThread">A good chase isn’t always about the big shots. Sometimes it’s about knowing when not to play one.</div><div class="meta">COMMUNITY PREVIEW · NOT LIVE</div></div>
+            <div><strong>Arjun</strong><span class="feed-category">Match discussion</span><div class="thread" id="feedThread">A good chase isn’t always about the big shots. Sometimes it’s about knowing when not to play one.</div><div class="meta">Sample post</div></div>
           </div>
         </article>
       </div>
-      <p class="section-call">Preview interactions only. Real matches, quiz attempts and community posts will come from Cricket.Monster’s own API.</p>
+      <p class="section-call">This is a preview: picks, quiz answers and posts are for demonstration only.</p>
     </section>
 
     <section class="container banner" aria-label="Get started">
-      <div><p class="eyebrow">THE CONVERSATION IS JUST GETTING STARTED</p><h2>There’s always<br>another innings.</h2></div>
+      <div><h2>There’s always<br>another innings.</h2></div>
       <a href="#match-preview" class="button button-dark">Try the match preview <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
     </section>
   </main>
   <footer class="container footer">
     <a class="logo" href="#top" aria-label="Cricket Monster, return to top"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 44 44" width="25" height="25" fill="none"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="2"/><path d="M10.5 11.6c7 6.2 7 15 0 21M33.5 11.6c-7 6.2-7 15 0 21" stroke="currentColor" stroke-width="1.6"/></svg></span><span class="logo-title"><span>CRICKET</span><span>MONSTER</span></span></a>
     <nav class="foot-nav" aria-label="Footer navigation"><a href="#match-preview">Match Monster</a><a href="#daily-monster">Daily Monster</a><a href="#fan-feed">Feed</a></nav>
-    <div class="fineprint"><span>© Cricket.Monster · Landing page design concept · Sample content, no live integration.</span><span>Cricket stadium photograph: Zoshua Colah / <a href="https://unsplash.com/photos/cricket-match-happening-at-night-under-bright-stadium-lights-66X4NgftbrA" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:2px">Unsplash</a>. Illustrated fallback: original artwork.</span></div>
+    <div class="fineprint"><span>© Cricket.Monster · Preview website. Interactive examples only.</span><span>Cricket stadium photograph: Zoshua Colah / <a href="https://unsplash.com/photos/cricket-match-happening-at-night-under-bright-stadium-lights-66X4NgftbrA" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;text-underline-offset:2px">Unsplash</a>. Illustrated fallback: original artwork.</span></div>
   </footer>
-  <dialog id="quizDialog" aria-labelledby="quizTitle"><div class="modal-inner"><div class="modal-head"><span class="eyebrow" style="color:var(--field)">DAILY MONSTER · SAMPLE</span><button class="modal-close" type="button" aria-label="Close quiz preview" data-close="quizDialog">×</button></div><h2 id="quizTitle">HOW MANY LEGAL BALLS ARE IN A STANDARD OVER?</h2><p class="small-muted">One practice question, not today's live challenge.</p><div class="sample-options" id="quizOptions"><button type="button" data-answer="4">4 balls</button><button type="button" data-answer="6">6 balls</button><button type="button" data-answer="8">8 balls</button><button type="button" data-answer="10">10 balls</button></div><div class="result-text" id="quizResult" aria-live="polite">Choose an answer.</div></div></dialog>
-  <dialog id="signInDialog" aria-labelledby="signinTitle"><div class="modal-inner"><div class="modal-head"><span class="eyebrow" style="color:var(--field)">CRICKET.MONSTER</span><button class="modal-close" type="button" aria-label="Close sign-in preview" data-close="signInDialog">×</button></div><h2 id="signinTitle">SIGN IN IS COMING.</h2><p class="small-muted">The full platform is on its way. This preview uses no account, does not save picks, and is not connected to live cricket data.</p><button type="button" class="button button-dark" data-close="signInDialog">Back to the preview</button></div></dialog>
+  <dialog id="quizDialog" aria-labelledby="quizTitle"><div class="modal-inner"><div class="modal-head"><span class="quiz-dialog-name">Daily Monster</span><button class="modal-close" type="button" aria-label="Close quiz preview" data-close="quizDialog">×</button></div><h2 id="quizTitle">How many legal balls are in a standard over?</h2><p class="small-muted">One practice question, not today's live challenge.</p><div class="sample-options" id="quizOptions"><button type="button" data-answer="4">4 balls</button><button type="button" data-answer="6">6 balls</button><button type="button" data-answer="8">8 balls</button><button type="button" data-answer="10">10 balls</button></div><div class="result-text" id="quizResult" aria-live="polite">Choose an answer.</div></div></dialog>
+  <dialog id="signInDialog" aria-labelledby="signinTitle"><div class="modal-inner"><div class="modal-head"><span class="eyebrow" style="color:var(--field)">CRICKET.MONSTER</span><button class="modal-close" type="button" aria-label="Close sign-in preview" data-close="signInDialog">×</button></div><h2 id="signinTitle">Sign-in is coming soon.</h2><p class="small-muted">The full platform is on its way. This preview uses no account, does not save picks, and is not connected to live cricket data.</p><button type="button" class="button button-dark" data-close="signInDialog">Back to the preview</button></div></dialog>
   <script>
     const menuToggle=document.getElementById('menuToggle');const nav=document.getElementById('siteNav');
     menuToggle.addEventListener('click',()=>{const opened=nav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(opened));menuToggle.setAttribute('aria-label',opened?'Close menu':'Open menu');});
