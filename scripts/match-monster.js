@@ -1,0 +1,18 @@
+(()=>{
+const menu=document.getElementById('menuBtn');const nav=document.getElementById('mainNav');menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
+const config=[['winner','Match winner'],['toss_winner','Toss winner'],['toss_decision','Toss decision'],['top_batter','Top batter'],['top_bowler','Top bowler'],['sixes','More sixes'],['player_of_match','Player of the Match'],['final_over','Final scheduled over']];
+const key='cm-demo-picks-v1';let draft={};let locked=false;try{const loaded=JSON.parse(localStorage.getItem(key)||'{}');if(loaded&&typeof loaded==='object'&&!Array.isArray(loaded))draft=loaded;}catch{}
+const cards=[...document.querySelectorAll('[data-q]')];
+function render(){
+cards.forEach(card=>{const id=card.dataset.q;const selected=draft[id]||'';card.classList.toggle('selected',!!selected);card.classList.toggle('is-locked',locked);card.querySelectorAll('button[data-option]').forEach(btn=>{btn.setAttribute('aria-pressed',String(btn.dataset.option===selected));btn.disabled=locked});const select=card.querySelector('select');if(select){select.value=selected;select.disabled=locked}});
+const selected=config.filter(([id])=>draft[id]).length;document.getElementById('progressText').textContent=`${selected} / 8 selected`;document.getElementById('mobileCount').textContent=`${selected} of 8 selected`;document.getElementById('progressFill').style.width=`${selected/8*100}%`;document.getElementById('slipProgress').setAttribute('aria-valuenow',String(selected));
+const list=document.getElementById('slipList');list.replaceChildren();config.forEach(([id,label])=>{const li=document.createElement('li'),name=document.createElement('span'),value=document.createElement('strong');name.textContent=label;value.textContent=draft[id]||'Not selected';if(!draft[id])value.className='empty';li.append(name,value);list.appendChild(li)});
+document.getElementById('savePicks').disabled=locked;document.getElementById('matchState').textContent=locked?'Locked (simulated)':'Questions open (demo)';document.getElementById('toggleLock').textContent=locked?'Return to editable picks':'Preview the locked state';
+}
+cards.forEach(card=>{card.querySelectorAll('button[data-option]').forEach(btn=>btn.addEventListener('click',()=>{if(locked)return;draft[card.dataset.q]=btn.dataset.option;document.getElementById('saveMessage').textContent='Unsaved changes in this preview.';render()}));const select=card.querySelector('select');if(select)select.addEventListener('change',()=>{if(locked)return;draft[card.dataset.q]=select.value;document.getElementById('saveMessage').textContent='Unsaved changes in this preview.';render()})});
+document.getElementById('savePicks').addEventListener('click',()=>{try{localStorage.setItem(key,JSON.stringify(draft));document.getElementById('saveMessage').textContent='Saved on this device for the demo. Nothing was submitted online.';}catch{document.getElementById('saveMessage').textContent='Your browser did not allow local saving. Your current selections remain visible.'}});
+document.getElementById('toggleLock').addEventListener('click',()=>{locked=!locked;document.getElementById('saveMessage').textContent=locked?'Example locked state. No actual match lock has happened.':'Editable demo restored.';render()});
+document.getElementById('clearPicks').addEventListener('click',()=>{draft={};locked=false;try{localStorage.removeItem(key)}catch{};document.getElementById('saveMessage').textContent='Demo selections cleared.';render()});
+document.getElementById('jumpToSlip').addEventListener('click',()=>document.getElementById('predictionSlip').scrollIntoView({behavior:'smooth',block:'center'}));
+render();
+})();

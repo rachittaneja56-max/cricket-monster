@@ -1,6 +1,16 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/match-monster",
+      "destination": "/match-monster/index.html"
+    },
+    {
+      "source": "/daily-monster",
+      "destination": "/daily-monster/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
