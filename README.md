@@ -1,12 +1,12 @@
-# Cricket.Monster — Landing and feature previews
+# Cricket.Monster frontend prototype
 
-The original landing-page hero is preserved. The site adds two responsive, linked fan-facing feature pages:
+Review branch: unified matchday redesign. Static HTML/CSS/JavaScript; no build step.
 
-- `/match-monster/`: eight example prediction questions grouped into pre-toss and pre-match deadlines, answer selection, sticky slip, local demo saving and a simulated locked state.
-- `/daily-monster/`: ten-question, three-minute cricket practice quiz with progress, countdown, resume (if browser storage is available) and result review.
+- `/`: stadium hero, eight-pick preview, sample fan-post carousel and daily entry.
+- `/match-monster/`: eight questions, local saving, toss/full lock and example result states.
+- `/daily-monster/`: ten questions, 180-second timer, resume and result review.
+- `/review/`: audit, design tokens, browser screenshots and unresolved product decisions.
 
-This is a **frontend prototype**, not a connected production app. The RCB vs CSK fixture and player pool are examples, not verified 2027 schedules/lineups. Predictions are saved in this browser only; no live submission, server-side locking, leaderboard or genuine points. Daily practice uses browser time, not server-enforced attempts. To connect production APIs, replace these demo interactions with the team's authenticated endpoint contracts.
+No authentication, live data, server locking, community posting, real points or rankings. Browser-local storage only. All fixtures, player pools and example results are illustrative.
 
-Static HTML/CSS/JS; no build step. The Match Monster wireframe's admin menu is not part of the fan-facing page.
-
-For local development use `python -m http.server 8000` from the project root.
+Serve the root with a static HTTP server. No production release until explicit approval.
