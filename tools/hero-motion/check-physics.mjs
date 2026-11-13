@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {BALL_RADIUS,CONTACT_FRAME,ballPosition,physicalTime} from './src/physics.ts';
+const bounce=ballPosition(79);
+assert.ok(Math.abs(bounce[1]-BALL_RADIUS)<1e-8,'ball rests on pitch at bounce');
+const contact=ballPosition(CONTACT_FRAME);
+assert.ok(Math.abs(contact[2]+BALL_RADIUS-.978)<.003,'ball touches front of blade within 3 mm');
+assert.ok(contact[1]>.12&&contact[1]<.4,'contact is on lower blade');
+assert.ok(ballPosition(107)[2]<contact[2]&&ballPosition(109)[2]<contact[2],'z velocity reverses only at impact');
+assert.ok(ballPosition(109)[0]<contact[0],'outgoing ball deflects into outfield');
+for(let f=23;f<166;f++)assert.ok(ballPosition(f)[1]>=BALL_RADIUS-.001,`ball above ground at frame ${f}`);
+for(let f=1;f<216;f++)assert.ok(physicalTime(f)>physicalTime(f-1),'physical time progresses');
+console.log('Bounce height, blade contact, outgoing direction, clearance, monotonic time: passed.');

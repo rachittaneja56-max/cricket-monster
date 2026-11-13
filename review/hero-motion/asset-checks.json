@@ -1,0 +1,11 @@
+{
+  "fastStart": true,
+  "atoms": [
+    "ftyp",
+    "moov",
+    "free",
+    "mdat"
+  ],
+  "loopEndpointMeanAbsolutePixelDifference": 1.2391344762731482,
+  "webBytes": 692973
+}

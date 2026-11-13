@@ -1,0 +1,52 @@
+{
+  "name": "hero-motion",
+  "version": "1.0.0",
+  "description": "Cricket.Monster real night-ground footage and hero loop",
+  "repository": {},
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/cli": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.543",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.183.1",
+    "@playwright/test": "1.56.1",
+    "ffmpeg-static": "5.2.0",
+    "ffprobe-static": "3.1.0",
+    "@types/react": "19.3.0",
+    "@types/web": "0.0.166",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "tsc --noEmit",
+    "fetch:footage": "node fetch-footage.mjs",
+    "prepare:footage": "python prepare-footage.py",
+    "render:preview": "remotion render LiveStadium out/live-stadium-preview.mp4 --scale=0.5 --crf=18 --pixel-format=yuv420p --concurrency=2",
+    "render:ground": "remotion render BroadcastGround out/broadcast-ground-preview.mp4 --scale=0.5 --crf=23 --gl=angle --concurrency=2",
+    "render:master": "remotion render LiveStadium out/live-stadium-master.mp4 --crf=14 --pixel-format=yuv420p --concurrency=2",
+    "render:batting": "remotion render BattingMoment out/real-batting-master.mp4 --crf=15 --pixel-format=yuv420p --concurrency=2",
+    "render:legacy": "remotion render BallContact out/legacy-cgi-master.mp4 --crf=17 --pixel-format=yuv420p --gl=angle --concurrency=2",
+    "encode": "node encode-footage.mjs --install",
+    "test:physics": "node check-physics.mjs",
+    "test:browser": "node verify.mjs",
+    "compare": "node compare-candidates.mjs"
+  },
+  "overrides": {"postcss-selector-parser":"7.1.0"},
+  "allowScripts": {
+    "esbuild": false
+  }
+}

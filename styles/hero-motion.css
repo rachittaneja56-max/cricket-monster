@@ -1,0 +1,38 @@
+/* The existing hero grid and prediction card retain their original geometry. */
+.stadium-scene {
+  position: relative;
+  isolation: isolate;
+  background-image: url('/assets/stadium-hero-poster.webp');
+  background-position: center top;
+  overflow: hidden;
+}
+.stadium-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+.is-video-ready .stadium-video { opacity: 1; }
+.stadium-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(0deg,#102832 0%,#10283218 22%,#10283218 76%,#10283248 100%),linear-gradient(90deg,#081c29d9 0%,#081c2980 36%,#081c2940 75%);
+}
+.stadium-scene .hero-stage { position: relative; z-index: 2; }
+@media (max-width: 850px) {
+  .stadium-scene { background-position: 36% center; }
+  .stadium-scene::after { background: linear-gradient(0deg,#102832e0 0%,#10283224 50%,#102832a0 100%),linear-gradient(90deg,#102832b8,#10283245); }
+  .stadium-video { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stadium-video { display: none; transition: none; }
+}

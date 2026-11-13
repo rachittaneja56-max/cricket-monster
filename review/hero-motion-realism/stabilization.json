@@ -1,0 +1,12 @@
+{
+  "sourceStartSeconds": 10.5,
+  "sourceFrameRate": 29.97002997002997,
+  "plateFrames": 104,
+  "plateFps": 30,
+  "plateDuration": 3.466666666666667,
+  "stabilization": "SIFT + robust similarity camera registration, sampled every 4 frames, interpolated and smoothed over 15 frames; no shear or perspective warp",
+  "fixedCropScale": 1.18,
+  "maximumUncoveredPixelFraction": 0.0,
+  "generatedSceneElements": false,
+  "remotionPlaybackRate": 0.5
+}

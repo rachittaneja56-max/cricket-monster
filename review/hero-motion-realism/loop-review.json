@@ -1,0 +1,7 @@
+{
+  "decodedFrames": 192,
+  "boundaryMeanAbsoluteDifference": 3.22083984375,
+  "adjacentFrameMedianDifference": 1.812084056712963,
+  "adjacentFrame95thPercentileDifference": 3.097420609085648,
+  "assessment": "First/last frames, overlap contact sheet, encoded playback and in-page playback inspected. No hard reset; slight residual aerial drift and a short overlap remain."
+}
