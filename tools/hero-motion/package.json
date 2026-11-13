@@ -1,0 +1,47 @@
+{
+  "name": "hero-motion",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/cli": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.543",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.183.1",
+    "@playwright/test": "1.56.1",
+    "ffmpeg-static": "5.2.0",
+    "ffprobe-static": "3.1.0",
+    "@types/react": "19.3.0",
+    "@types/web": "0.0.166",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "tsc --noEmit",
+    "render:preview": "remotion render BallContact out/ball-contact-preview.mp4 --scale=0.5 --crf=23 --gl=angle --concurrency=2",
+    "render:ground": "remotion render BroadcastGround out/broadcast-ground-preview.mp4 --scale=0.5 --crf=23 --gl=angle --concurrency=2",
+    "render:master": "remotion render BallContact out/stadium-hero-master.mp4 --crf=17 --pixel-format=yuv420p --gl=angle --concurrency=2",
+    "encode": "node encode.mjs",
+    "test:physics": "node check-physics.mjs",
+    "test:browser": "node verify.mjs"
+  },
+  "overrides": {"postcss-selector-parser":"7.1.0"},
+  "allowScripts": {
+    "esbuild": false
+  }
+}
