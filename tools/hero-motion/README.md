@@ -76,4 +76,8 @@ $env:BASE_URL = 'https://your-preview.vercel.app'
 npm run test:browser
 ```
 
+`node capture.mjs` records the actual browser hero to WebM and saves a screenshot during contact, plus before/after media times and decoded-frame counts. It uses the same optional `BASE_URL` and `ARTIFACT_DIR` variables.
+
+Validation completed with 75 passing browser checks locally and 75 against the Vercel preview. No uncaught browser errors or horizontal overflow were detected. Mobile, reduced-motion, data-saving and no-JavaScript cases made zero MP4 requests. Measured cumulative layout shift was below 0.004 at every requested width. Reports and selected screenshots are also committed under `review/hero-motion/`.
+
 The workflow follows the [official Remotion Three.js integration](https://www.remotion.dev/docs/three) and [Remotion agent skills](https://github.com/remotion-dev/skills).

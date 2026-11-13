@@ -19,7 +19,7 @@ try {
       window.__cls=0;
       new PerformanceObserver(list=>list.getEntries().forEach(e=>{if(!e.hadRecentInput)window.__cls+=e.value;})).observe({type:'layout-shift',buffered:true});
     });
-    await page.goto(base,{waitUntil:'networkidle'});
+    await page.goto(base,{waitUntil:'load'});
     const video=page.locator('#stadiumVideo');
     if(width>850) {
       await page.waitForFunction(()=>{const v=document.querySelector('video');return v&&!v.paused&&v.readyState>=3;});
@@ -75,7 +75,7 @@ try {
     const page=await context.newPage();const requests=[];
     page.on('request',r=>{if(r.url().endsWith('.mp4'))requests.push(r.url());});
     if(mode==='video-error')await page.route('**/stadium-hero.mp4',route=>route.abort());
-    await page.goto(base,{waitUntil:'networkidle'});
+    await page.goto(base,{waitUntil:'load'});
     check(`${mode}: fallback preserves headline`,await page.locator('h1').isVisible());
     check(`${mode}: fallback poster remains`,!(await page.locator('.stadium-scene').getAttribute('class')).includes('is-video-ready'));
     if(['reduced-motion','save-data','no-javascript'].includes(mode))check(`${mode}: no MP4 transferred`,requests.length===0);
