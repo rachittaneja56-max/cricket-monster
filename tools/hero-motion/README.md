@@ -1,59 +1,80 @@
-# Cricket.Monster hero motion
+# Cricket.Monster — real night-ground hero
 
-A local Remotion + React Three Fiber + Three.js project for the existing static homepage. The website needs no React runtime. No AI video service, paid video API, external model, or generated stadium is used.
+The homepage now uses **real recorded cricket footage**, edited locally in the existing Remotion project. The artificial ball, detached bat, reconstructed pitch and photographic backdrop are no longer in the selected composition. `src/StadiumHero.tsx` and its original compositions are preserved under **Previous-CGI** in Studio for comparison.
 
-## Reproduce on Windows
+The selected source is [Gokuldham Nar's night-match recording on Pexels](https://www.pexels.com/video/aerial-night-view-of-cricket-match-in-india-32311041/), downloaded at 3840×2160 / 29.97 fps. It is a high aerial view of a real local ground, not ground-level broadcast footage or a packed international stadium. Actual players, floodlights, grass, boundary activity and shadows belong to one coherent recording. No generated foreground, animated architecture, simulated people, glow, particles, shake, grading or motion blur was added.
 
-Node 24+ is recommended (the physics check uses Node's TypeScript support). From the repository root:
+## Reproduce locally on Windows
+
+Node 24+, Python, and the two packages in `requirements-footage.txt` are required. The tested environment used Node 24.21.0, OpenCV 5.0.0.93 and NumPy 2.2.6. From the repository root:
 
 ```powershell
 cd tools/hero-motion
 npm ci
+python -m pip install -r requirements-footage.txt
+npm run fetch:footage
+npm run prepare:footage
 npm run dev
-# In another terminal, in tools/hero-motion:
-npm run render:preview
-npm run render:ground
-npm run render:master
-npm run encode
-npm run lint
-npm run test:physics
 ```
 
-The first render downloads Remotion's own headless Chromium. `--gl=angle` uses the Windows ANGLE backend; rendering is local. All Remotion packages are pinned to 4.0.543, React to 19.3.1, R3F to 9.8.2, and Three.js to 0.187.0. The lockfile pins transitive dependencies. A `postcss-selector-parser` override avoids a registry version unavailable during setup.
+In a second terminal, in `tools/hero-motion`:
 
-FFmpeg and ffprobe are project-local npm dependencies; no global PATH setup is required. `encode.mjs` normalizes the master to limited-range yuv420p if needed, produces a 720p H.264 fast-start MP4, strips audio, creates a WebP poster and eight-frame contact sheet, saves ffprobe JSON, and decodes every web-output frame as an integrity check.
+```powershell
+npm run render:master
+npm run render:batting
+npm run encode
+npm run lint
+```
 
-## Outputs
+`fetch:footage` downloads only the two pinned recordings in `sources.json` and verifies SHA-256 hashes. If the CDN blocks a request, use the source page's normal **Free download** control, save the exact resolution shown in the manifest into `public/footage/`, and run the command again. A source hash change requires re-review rather than silently accepting a different clip.
 
-| File | Purpose |
+The stock originals and prepared plates are ignored render inputs. They are not published in Git or deployed as a stock library. The first Remotion render downloads its bundled headless Chromium. FFmpeg and ffprobe are installed locally through npm; a global installation is unnecessary.
+
+## Editing and looping
+
+`prepare-footage.py` takes the quiet source window beginning at 10.5 seconds. SIFT features and robust similarity registration remove most camera translation, rotation and scale drift. Transforms are sampled every four frames, interpolated and smoothed; there is no perspective warp, shear, invented background fill or fabricated scene element. A fixed 1.18× crop avoids uncovered edges. The measured uncovered-pixel fraction for the selected plate was zero.
+
+`src/FootageHero.tsx` defines the two real-footage compositions:
+
+- **LiveStadium:** 192 frames at 30 fps = 6.4 seconds. The prepared recording is played at 0.5× to restrain movement. There is a 16-frame / 0.53-second overlap between adjacent parts of the same shot. At the actual last-to-first boundary the source time advances continuously; the overlap then returns gradually to the beginning. Slight residual aerial drift remains. This is an edited recorded loop, not a live feed.
+- **BattingMoment:** eight seconds at the source-native 24 fps, with a real helmeted batter in outdoor nets. This candidate demonstrates genuine full-body movement but was rejected for the homepage: it is daylight practice, strokes recur, the ball approaches the viewer, and facility/equipment branding is visible. Its loop is less quiet and its setting does not match the night-ground brief. It is a local comparison asset only.
+
+The long affine-stabilization attempt was rejected because it exposed borders and changed framing. The first downloaded night orbit was also rejected as too fast. Those experiments are not used in LiveStadium.
+
+## Encoding and quality comparison
+
+The 1920×1080 master is rendered at CRF 14 and normalized to limited-range yuv420p. `encode-footage.mjs` makes three 1280×720 H.264 versions, all silent and fast-start, and compares them against a Lanczos-downscaled master using FFmpeg SSIM. Visual inspection includes the encoded clips, 100% grass crops and actual homepage screenshots.
+
+| CRF | Web bytes | SSIM against downscaled master |
+| --- | ---: | ---: |
+| **18 — selected** | **2,597,457** | **0.985125** |
+| 21 | 1,398,694 | 0.980621 |
+| 24 | 800,796 | 0.974853 |
+
+CRF 18 retains more grass and boundary detail. Output size is driven by quality, without a bitrate cap or an artificially small target. The selected master is 14,232,997 bytes. The batting comparison is 5,560,188 bytes at 720p and CRF 18; its size is another reason to prefer the quieter night shot. Metrics support comparison but do not establish realism by themselves.
+
+`npm run encode` installs the selected file and poster into `../../assets/`, saves a master alias at `out/stadium-hero-master.mp4`, generates contact sheets and ffprobe JSON, checks fast-start atom order, and decodes every frame. It also encodes BattingMoment if that master exists. Run `node encode-footage.mjs` without `--install` to inspect candidates without changing website assets.
+
+## Main outputs
+
+| File | Contents |
 | --- | --- |
-| `out/stadium-hero-master.mp4` | 1920×1080 master, 9 seconds, 24 fps |
-| `../../assets/stadium-hero.mp4` | 1280×720 web asset committed to Git |
-| `../../assets/stadium-hero-poster.webp` | First-frame fallback committed to Git |
-| `out/ball-contact-preview.mp4` | Half-resolution Ball Contact direction |
-| `out/broadcast-ground-preview.mp4` | Half-resolution Broadcast Ground alternative |
-| `out/contact-sheet.jpg` | Frames 0, 48, 79, 96, 108, 120, 144, 215 |
-| `out/*-metadata.json` | FFprobe stream and container metadata |
+| `out/live-stadium-master.mp4` | 1080p selected master |
+| `out/stadium-hero-master.mp4` | Alias of the selected master after encoding |
+| `../../assets/stadium-hero.mp4` | Selected 720p / 30 fps background |
+| `../../assets/stadium-hero-poster.webp` | WebP fallback from the same shot |
+| `out/live-stadium-contact-sheet.jpg` | Loop overlap and main action frames |
+| `out/real-batting-candidate.mp4` | Rejected but playable real-batting comparison |
+| `out/realism-comparison/` | Actual browser screenshots and playback readings for CGI, A and B |
+| `out/realism-verification/` | Current local browser tests and responsive screenshots |
 
-Masters, previews, browser screenshots, installed dependencies, and abandoned install folders are ignored by Git. Only the optimized video, poster, small source material maps, and source are committed. `.vercelignore` excludes the local production tooling from the static deployment.
+The preceding CGI web video, poster, master and contact sheet were copied to `out/previous-cgi/` before replacement. They also remain recoverable from Git commit `7e649ad` and the earlier delivery bundle. Legacy source remains renderable with `npm run render:legacy`; archived notes are in `README-CGI.md`.
 
-## Compositions and visual choice
+## Product integration and verification
 
-**BallContact** uses a pitch-level camera, seeded grass and dry-pitch materials, a regulation-radius 36 mm red leather ball with six stitch rows and a geometric seam, a willow blade with bevels and rubber grip, crease lines, and stumps. The incoming ball bounces at frame 79, meets the front of the bat at frame 108, then changes direction into the outfield. `physics.ts` separates screen time from physical time for restrained slow motion. Only frame-controlled values drive animation; there are no wall-clock animation timers or real-time physics dependencies.
+The hero grid, dimensions, headline, right-hand card, typography and CTAs are preserved. The existing playback controller is reused. The only visual integration adjustment is top-aligning the video/poster so desktop cropping retains the floodlights and the pitch. The footer credits the actual recording.
 
-**BroadcastGround** has a wider view with an independently animated rolling ball, boundary flag movement, and periodic light variation. It is included for comparison; its distant activity is less clear behind the interface. BallContact was selected for recognizable action and its lower-left contact area.
-
-The bat enters from above without a full-body character. This is visibly procedural CGI composited against a photograph, not filmed cricket or photorealistic player footage. The photographed crowd is static; independent motion comes from the local 3D action. No licensed batting footage or credible character was identified in the repository or inspected local-media inventory, so no real-player version is included.
-
-The original photograph is `../../assets/stadium.webp`, credited by the website to [Zoshua Colah / Unsplash](https://unsplash.com/photos/cricket-match-happening-at-night-under-bright-stadium-lights-66X4NgftbrA). A byte-identical copy is included in `public/` for deterministic rendering. Other maps are seeded procedural textures made by `make-textures.py`; optionally rebuilding them requires Python, Pillow, and NumPy. The maps are checked in, so Python is not required to render.
-
-Opening and closing holds contain no ball or bat. Camera and light variation are periodic, with a very small difference between adjacent last/first frames. The ball resets out of camera view.
-
-## Homepage behavior
-
-`scripts/hero-motion.js` attaches the source only above 850px when reduced motion and data saving are off. The poster paints immediately. Video stays muted, inline, decorative, and pointer-transparent. A 44px pause/play control remembers the user's choice for the browser session. The controller pauses offscreen, on hidden documents, and during page suspension, and unloads the source when mobile or reduced motion becomes active. Download, decode, and autoplay failures leave the poster and interactive hero intact. The headline, right-hand prediction card, CTAs, and prediction behavior are preserved.
-
-## Browser verification
+The established Playwright suite checks 1440, 1024, 768, 390 and 320px, real advancing video time, pause/resume, loop wrap, navigation, prediction transfer/saving, all ten quiz questions, overflow, layout shifts, poster loading, mobile/reduced-motion/save-data/no-JS behavior, playback failures, offscreen pause and preference changes. Hidden-document policy is tested with a simulated visibility event and reported as such. No MP4 is requested on mobile or under reduced motion or data saving.
 
 From the repository root:
 
@@ -61,23 +82,17 @@ From the repository root:
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Then in `tools/hero-motion`:
+From `tools/hero-motion`:
 
 ```powershell
+$env:ARTIFACT_DIR = 'out/realism-verification'
 npm run test:browser
+npm run compare
+node capture.mjs
 ```
 
-The suite uses installed Google Chrome through Playwright. It tests widths 1440, 1024, 768, 390, and 320; actual advancing video time; pause/resume; desktop card placement; both CTAs; winner transfer; saving predictions; a full ten-question Daily Monster attempt; overflow; layout shifts; mobile/reduced-motion/save-data/no-JS fallbacks; rejected autoplay; failed video requests; out-of-view pausing; preference changes; and loop wrap. The hidden-document policy uses a simulated visibility event and is identified as such in the report.
+The browser tools use installed Google Chrome. `compare` temporarily serves each candidate through Playwright request interception behind the unchanged real interface; it does not publish the rejected batting candidate. For a deployed check, set `BASE_URL` to the Vercel preview and choose a separate `ARTIFACT_DIR` before running `test:browser`.
 
-Screenshots and JSON reports are written to `out/verification`. To test a deployment:
+## Source and rights information
 
-```powershell
-$env:BASE_URL = 'https://your-preview.vercel.app'
-npm run test:browser
-```
-
-`node capture.mjs` records the actual browser hero to WebM and saves a screenshot during contact, plus before/after media times and decoded-frame counts. It uses the same optional `BASE_URL` and `ARTIFACT_DIR` variables.
-
-Validation completed with 75 passing browser checks locally and 75 against the Vercel preview. No uncaught browser errors or horizontal overflow were detected. Mobile, reduced-motion, data-saving and no-JavaScript cases made zero MP4 requests. Measured cumulative layout shift was below 0.004 at every requested width. Reports and selected screenshots are also committed under `review/hero-motion/`.
-
-The workflow follows the [official Remotion Three.js integration](https://www.remotion.dev/docs/three) and [Remotion agent skills](https://github.com/remotion-dev/skills).
+See [FOOTAGE-LICENSES.md](FOOTAGE-LICENSES.md) and [sources.json](sources.json) for creator credits, original pages, license links, exact files, restrictions and the separate treatment of the branded batting candidate. No player, club, ground or sponsor endorsement is claimed.

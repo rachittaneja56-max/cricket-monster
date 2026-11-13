@@ -104,7 +104,7 @@ try {
   });
   await page.waitForFunction(()=>!document.querySelector('video').paused);
   check('visible-document policy resumes video',true);
-  await page.locator('video').evaluate(v=>{v.currentTime=8.8;});
+  await page.locator('video').evaluate(v=>{v.currentTime=v.duration-.2;});
   await page.waitForFunction(()=>document.querySelector('video').currentTime<1);
   check('video wraps from final second to start',true);
   await page.emulateMedia({reducedMotion:'reduce'});

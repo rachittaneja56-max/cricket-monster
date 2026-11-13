@@ -1,0 +1,33 @@
+{
+  "reviewDate": "2026-11-13",
+  "licenseUrl": "https://www.pexels.com/license/",
+  "termsUrl": "https://www.pexels.com/terms-of-service/",
+  "sources": [
+    {
+      "id": "32311041",
+      "name": "Live Stadium",
+      "creator": "Gokuldham Nar",
+      "page": "https://www.pexels.com/video/aerial-night-view-of-cricket-match-in-india-32311041/",
+      "download": "https://videos.pexels.com/video-files/32311041/13780187_3840_2160_30fps.mp4",
+      "localFile": "night-match-source.mp4",
+      "sha256": "69740fcd8cf310bd67968757e054a87c07b9ebcf66daac487d0ff196ccfff7bb",
+      "sourceResolution": "3840x2160",
+      "sourceFrameRate": "30000/1001",
+      "license": "Pexels License",
+      "role": "Selected night-ground candidate; recorded drone footage, not generated video"
+    },
+    {
+      "id": "40800361",
+      "name": "Batting Moment",
+      "creator": "LayG Traveller",
+      "page": "https://www.pexels.com/video/intense-cricket-batting-practice-session-40800361/",
+      "download": "https://videos.pexels.com/video-files/40800361/17432441_2560_1440_24fps.mp4",
+      "localFile": "batting-source.mp4",
+      "sha256": "dce97b784e768d420df72d1a0bb00f4885b9b2b5c1d2d67e7291489d87381656",
+      "sourceResolution": "2560x1440",
+      "sourceFrameRate": "24/1",
+      "license": "Pexels License",
+      "role": "Local comparison candidate; actual daytime net practice, not selected as the night hero"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "selectedCrf": 18,
+  "comparisons": [
+    {
+      "crf": 18,
+      "bytes": 2597457,
+      "ssim": 0.985125
+    },
+    {
+      "crf": 21,
+      "bytes": 1398694,
+      "ssim": 0.980621
+    },
+    {
+      "crf": 24,
+      "bytes": 800796,
+      "ssim": 0.974853
+    }
+  ],
+  "fastStart": true,
+  "atoms": [
+    "ftyp",
+    "moov",
+    "free",
+    "mdat"
+  ]
+}
