@@ -72,9 +72,9 @@ The preceding CGI web video, poster, master and contact sheet were copied to `ou
 
 ## Product integration and verification
 
-The hero grid, dimensions, headline, right-hand card, typography and CTAs are preserved. The existing playback controller is reused. The only visual integration adjustment is top-aligning the video/poster so desktop cropping retains the floodlights and the pitch. The footer credits the actual recording.
+The hero grid, dimensions, headline, right-hand card, typography and CTAs are preserved. Eligible desktop visitors get automatic muted playback with no visible pause/play button. Old saved pause preferences are ignored. Playback still pauses while the hero is offscreen or the document is hidden, and the poster remains if autoplay fails. The video/poster is top-aligned so desktop cropping retains the floodlights and the pitch. The footer credits the actual recording.
 
-The established Playwright suite checks 1440, 1024, 768, 390 and 320px, real advancing video time, pause/resume, loop wrap, navigation, prediction transfer/saving, all ten quiz questions, overflow, layout shifts, poster loading, mobile/reduced-motion/save-data/no-JS behavior, playback failures, offscreen pause and preference changes. Hidden-document policy is tested with a simulated visibility event and reported as such. No MP4 is requested on mobile or under reduced motion or data saving.
+The established Playwright suite checks 1440, 1024, 768, 390 and 320px, real advancing video time, absence of the motion button, autoplay despite an obsolete saved pause preference, loop wrap, navigation, prediction transfer/saving, all ten quiz questions, overflow, layout shifts, poster loading, mobile/reduced-motion/save-data/no-JS behavior, playback failures, offscreen pause and preference changes. Hidden-document policy is tested with a simulated visibility event and reported as such. No MP4 is requested on mobile or under reduced motion or data saving.
 
 From the repository root:
 

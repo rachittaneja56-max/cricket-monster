@@ -1,8 +1,7 @@
 (() => {
   const scene = document.querySelector('.stadium-scene');
   const video = document.getElementById('stadiumVideo');
-  const control = document.getElementById('heroMotionControl');
-  if (!scene || !video || !control) return;
+  if (!scene || !video) return;
 
   const desktop = matchMedia('(min-width: 851px)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -11,25 +10,16 @@
   let suspended = false;
   let blocked = false;
   let failed = false;
-  let userPaused = false;
   let revision = 0;
   let playPending = false;
-  try { userPaused = sessionStorage.getItem('cm-hero-paused') === 'true'; } catch {}
 
   const eligible = () => desktop.matches && !reduced.matches &&
     !connection?.saveData && !/^(slow-)?2g$/.test(connection?.effectiveType || '');
   const shouldPlay = () => eligible() && inView && !document.hidden &&
-    !suspended && !userPaused && !blocked && !failed;
-
-  function updateControl() {
-    const playing = !video.paused;
-    control.textContent = playing ? 'Pause motion' : 'Play motion';
-    control.setAttribute('aria-label', playing ? 'Pause stadium animation' : 'Play stadium animation');
-  }
+    !suspended && !blocked && !failed;
 
   async function sync() {
     const request = ++revision;
-    control.hidden = !eligible() || failed;
     if (!eligible()) {
       video.pause();
       if (video.hasAttribute('src')) {
@@ -42,32 +32,23 @@
         video.src = video.dataset.src;
         video.muted = true;
       }
-      if (playPending || !video.paused) { updateControl(); return; }
+      if (playPending || !video.paused) return;
       playPending = true;
       try {
         await video.play();
         if (!shouldPlay()) video.pause();
       } catch {
         if (request === revision) blocked = true;
-        // The poster and an explicit play control remain available.
+        // Keep the poster visible if the browser blocks autoplay.
       } finally { playPending = false; }
       if (request !== revision && shouldPlay() && video.paused) { sync(); return; }
     } else video.pause();
-    updateControl();
   }
 
-  control.addEventListener('click', () => {
-    userPaused = !video.paused;
-    blocked = false;
-    try { sessionStorage.setItem('cm-hero-paused', String(userPaused)); } catch {}
-    sync();
-  });
   video.addEventListener('playing', () => {
     if (!shouldPlay()) { video.pause(); return; }
     scene.classList.add('is-video-ready');
-    updateControl();
   });
-  video.addEventListener('pause', updateControl);
   video.addEventListener('error', () => {
     if (!video.hasAttribute('src')) return;
     failed = true;

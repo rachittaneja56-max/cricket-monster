@@ -28,28 +28,11 @@
   background: linear-gradient(0deg,#102832 0%,#10283218 22%,#10283218 76%,#10283248 100%),linear-gradient(90deg,#081c29d9 0%,#081c2980 36%,#081c2940 75%);
 }
 .stadium-scene .hero-stage { position: relative; z-index: 2; }
-.hero-motion-control {
-  position: absolute;
-  z-index: 3;
-  bottom: 17px;
-  left: max(20px, calc((100% - var(--container)) / 2));
-  min-height: 44px;
-  padding: 9px 13px;
-  border: 1px solid #d6e3df75;
-  border-radius: 6px;
-  background: #102832dc;
-  color: #fffdf7;
-  font: 500 12px var(--body);
-  cursor: pointer;
-}
-.hero-motion-control:hover { background: #24404a; }
-.hero-motion-control:focus-visible { outline-color: #efd28a; }
-.hero-motion-control[hidden] { display: none; }
 @media (max-width: 850px) {
   .stadium-scene { background-position: 36% center; }
   .stadium-scene::after { background: linear-gradient(0deg,#102832e0 0%,#10283224 50%,#102832a0 100%),linear-gradient(90deg,#102832b8,#10283245); }
-  .stadium-video, .hero-motion-control { display: none; }
+  .stadium-video { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .stadium-video, .hero-motion-control { display: none; transition: none; }
+  .stadium-video { display: none; transition: none; }
 }

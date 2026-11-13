@@ -16,11 +16,13 @@ try {
     page.on('pageerror',e=>report.errors.push(e.message));
     page.on('request',r=>{if(r.url().endsWith('.mp4')) requests.push(r.url());});
     await page.addInitScript(()=>{
+      sessionStorage.setItem('cm-hero-paused','true');
       window.__cls=0;
       new PerformanceObserver(list=>list.getEntries().forEach(e=>{if(!e.hadRecentInput)window.__cls+=e.value;})).observe({type:'layout-shift',buffered:true});
     });
     await page.goto(base,{waitUntil:'load'});
     const video=page.locator('#stadiumVideo');
+    check(`${width}: no motion control is rendered`,await page.locator('#heroMotionControl, .hero-motion-control').count()===0);
     if(width>850) {
       await page.waitForFunction(()=>{const v=document.querySelector('video');return v&&!v.paused&&v.readyState>=3;});
       const before=await video.evaluate(v=>v.currentTime);
@@ -28,12 +30,7 @@ try {
       check(`${width}: actual video time advances`,await video.evaluate(v=>v.currentTime)>before);
       const boxes=await page.evaluate(()=>({copy:document.querySelector('.hero-copy').getBoundingClientRect().toJSON(),card:document.querySelector('.home-match').getBoundingClientRect().toJSON()}));
       check(`${width}: prediction card stays right`,boxes.card.x>=boxes.copy.right);
-      await page.locator('#heroMotionControl').click();
-      check(`${width}: pause works`,await video.evaluate(v=>v.paused));
-      await video.evaluate(v=>new Promise(resolve=>{v.addEventListener('seeked',resolve,{once:true});v.currentTime=4.5;}));
-      await page.locator('#heroMotionControl').click();
-      await page.waitForFunction(()=>!document.querySelector('video').paused);
-      check(`${width}: resume works`,await video.evaluate(v=>!v.paused));
+      check(`${width}: obsolete pause preference does not prevent autoplay`,await video.evaluate(v=>!v.paused));
     } else {
       check(`${width}: no mobile MP4 request`,requests.length===0);
       check(`${width}: mobile source stays detached`,!(await video.getAttribute('src')));
