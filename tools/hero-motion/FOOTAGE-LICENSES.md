@@ -1,24 +1,20 @@
-# Real-footage sources and review
+# Footage sources and licence review
 
-Reviewed 13 November 2026. Exact URLs, source dimensions, frame rates and SHA-256 hashes are in [sources.json](sources.json). Raw stock downloads remain ignored local render inputs; they are not checked into the repository or offered as a stock library.
+Reviewed 24 November 2026. Exact URLs, resolutions, frame rates and SHA-256 hashes are in [sources.json](sources.json). The raw downloads go to `public/footage/`, which is git-ignored. They are not committed or redistributed.
 
-## Selected night-ground source
+## Homepage hero: batting shot
 
-[Aerial Night View of Cricket Match in India](https://www.pexels.com/video/aerial-night-view-of-cricket-match-in-india-32311041/), by **Gokuldham Nar**, published on Pexels on 29 May 2025. Actual downloaded file: 3840×2160, 29.97 fps. The source is a recorded night match with real players, boundary activity, floodlights and stands. The edit uses a continuous late portion, camera stabilization, a fixed crop, half-speed playback and a short loop overlap.
+Built by [encode-hero-shot.mjs](encode-hero-shot.mjs). Both clips are real recordings. They were picked after screening every cricket clip returned by Pexels searches for "cricket batting", "shot", "batsman", "six" and "night" (64 clips, reviewed frame by frame). None showed batting at night; these two were the cleanest real shots.
 
-At the proposed web framing, individual faces are not identifiable and no prominent brand or advertising text is legible. The website does not claim endorsement, ownership of the original recording, or an affiliation with the depicted ground, participants, or event. Source credit is retained in the homepage footer and documentation.
+- **Mobile (`assets/hero-shot-mobile.mp4`):** [Dynamic Cricket Practice Session Outdoors](https://www.pexels.com/video/dynamic-cricket-practice-session-outdoors-32928952/) by **Gokuldham Nar**. 1080×1920, 30 fps. A side-on lofted swing in outdoor nets. Cropped to 2:3, slowed to 0.5× around contact (motion-interpolated), with a restrained exposure and colour pass. The kit has small manufacturer marks; no sponsor text is legible at web size.
+- **Desktop (`assets/hero-shot.mp4`):** [Cricketer Practicing Batting on Sunny Day](https://www.pexels.com/video/cricketer-practicing-batting-on-sunny-day-32543231/) by **Agha Bycric**. 1920×1080, 30 fps. A wide shot against an overcast sky. Mirrored for framing, cropped to 1280×720, and graded into a silhouette so no lettering reads backwards. No faces are identifiable.
 
-## Batting comparison source
+Each is one continuous shot that loops with a short dip to dark. Nothing is generated or composited.
 
-[Intense Cricket Batting Practice Session](https://www.pexels.com/video/intense-cricket-batting-practice-session-40800361/), by **LayG Traveller**, published on 5 November 2026. Actual downloaded file: 2560×1440, 24 fps. This is real full-body practice in outdoor nets. It is retained as a local candidate, not described as a match or selected for the public night-ground hero. The player is helmeted; a separate model/property release is not supplied by the page. Facility signage and equipment branding are visible, including a readable sign in the homepage crop. For these reasons, this candidate is not used on the public homepage. No claim of third-party release clearance is made.
+## Sign-up band: night ground
 
-## License scope
+**`assets/stadium-hero.mp4`:** [Aerial Night View of Cricket Match in India](https://www.pexels.com/video/aerial-night-view-of-cricket-match-in-india-32311041/) by **Gokuldham Nar**. Source 3840×2160, 29.97 fps. A recorded night match with real players, floodlights and stands. The committed 1280×720 loop was edited earlier (stabilised, fixed crop, half speed, short loop overlap); that pipeline is in the git history before the mobile-first redesign. At web size, no faces are identifiable and no brand text is legible.
 
-The [Pexels License](https://www.pexels.com/license/) permits editing and website use without a required credit. Its restrictions include offensive use of identifiable people, implied endorsement, trademark use, and redistribution as stock. [Commercial-use guidance](https://help.pexels.com/hc/en-us/articles/360042295214-Can-I-use-the-photos-and-videos-for-a-commercial-project) and the [terms](https://www.pexels.com/terms-of-service/) distinguish the media license from additional rights in depicted people, property, or brands. These recordings are used as attributed background material within the Cricket.Monster interface; do not repackage the files as a stock-footage product.
+## Licence scope
 
-## Rejected alternatives
-
-- [Cricket Stadium at Night, Bahadur Nirankari](https://www.pexels.com/video/cricket-stadium-at-night-11755921/): authentic recording, but its fast orbit and large change in viewpoint are distracting and difficult to loop.
-- [Cricket court in a stadium, Mixkit](https://mixkit.co/free-stock-video/cricket-court-in-a-stadium-12233/): the free 720p option is personal-use only under the Restricted License; it was not used.
-- [Cricket stadium in India, Prashant Kumar](https://www.pexels.com/video/aerial-view-of-cricket-stadium-in-india-38481437/): the actual downloaded video is daylight footage. It was rejected for the night brief despite nearby search thumbnails.
-- The long affine-stabilization experiment was rejected after it exposed borders and caused visible framing changes. No rejected experimental plate is used in the final composition.
+The [Pexels License](https://www.pexels.com/license/) permits editing and website use without a required credit. Its restrictions include offensive use of identifiable people, implied endorsement, trademark use, and redistribution as stock. The [terms](https://www.pexels.com/terms-of-service/) separate the media licence from any rights in the people, property or brands shown. These recordings are used as credited background footage within the Cricket Monster site. Credits are in the homepage footer. Don't repackage the files as stock footage.

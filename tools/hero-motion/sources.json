@@ -1,8 +1,36 @@
 {
-  "reviewDate": "2026-11-13",
+  "reviewDate": "2026-11-24",
   "licenseUrl": "https://www.pexels.com/license/",
   "termsUrl": "https://www.pexels.com/terms-of-service/",
   "sources": [
+    {
+      "id": "32928952",
+      "name": "Net Swing",
+      "creator": "Gokuldham Nar",
+      "page": "https://www.pexels.com/video/dynamic-cricket-practice-session-outdoors-32928952/",
+      "download": "https://videos.pexels.com/video-files/32928952/14033961_1080_1920_30fps.mp4",
+      "localFile": "net-swing-source.mp4",
+      "sha256": "5bd6ddce3a13375918e0827ad96f3172a1b2cd24bbb9075f323271b45945151b",
+      "sourceResolution": "1080x1920",
+      "sourceFrameRate": "30",
+      "license": "Pexels License",
+      "fetch": true,
+      "role": "Mobile homepage hero (assets/hero-shot-mobile.mp4): side-on lofted swing in outdoor nets, slowed at contact"
+    },
+    {
+      "id": "32543231",
+      "name": "Sky Swing",
+      "creator": "Agha Bycric",
+      "page": "https://www.pexels.com/video/cricketer-practicing-batting-on-sunny-day-32543231/",
+      "download": "https://videos.pexels.com/video-files/32543231/13878248_1920_1080_30fps.mp4",
+      "localFile": "sky-swing-source.mp4",
+      "sha256": "fd42b4c4e244830378f11f7e4a830c096548a2e904df33f26a1d6394be420d15",
+      "sourceResolution": "1920x1080",
+      "sourceFrameRate": "30",
+      "license": "Pexels License",
+      "fetch": true,
+      "role": "Desktop homepage hero (assets/hero-shot.mp4): wide silhouette lofted shot, mirrored, cropped and graded to dusk"
+    },
     {
       "id": "32311041",
       "name": "Live Stadium",
@@ -14,20 +42,8 @@
       "sourceResolution": "3840x2160",
       "sourceFrameRate": "30000/1001",
       "license": "Pexels License",
-      "role": "Selected night-ground candidate; recorded drone footage, not generated video"
-    },
-    {
-      "id": "40800361",
-      "name": "Batting Moment",
-      "creator": "LayG Traveller",
-      "page": "https://www.pexels.com/video/intense-cricket-batting-practice-session-40800361/",
-      "download": "https://videos.pexels.com/video-files/40800361/17432441_2560_1440_24fps.mp4",
-      "localFile": "batting-source.mp4",
-      "sha256": "dce97b784e768d420df72d1a0bb00f4885b9b2b5c1d2d67e7291489d87381656",
-      "sourceResolution": "2560x1440",
-      "sourceFrameRate": "24/1",
-      "license": "Pexels License",
-      "role": "Local comparison candidate; actual daytime net practice, not selected as the night hero"
+      "fetch": false,
+      "role": "Source of the committed night-ground loop (assets/stadium-hero.mp4) used behind the homepage sign-up band. That loop was edited with the earlier stabilisation pipeline (see git history before the mobile-first redesign); it is used as-is and not rebuilt by these scripts."
     }
   ]
 }
