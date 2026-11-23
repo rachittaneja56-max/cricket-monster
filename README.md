@@ -5,9 +5,9 @@ Static HTML, CSS and JavaScript with no build step. Live at https://cricket-mons
 | Page | What it shows |
 |---|---|
 | `/` | Real-footage hero, live product cards (match pick, warm-up question, leaderboard), points rules, fan posts, sign-up band |
-| `/feed/` | Community feed: post box, filters, likes, replies, share, report |
-| `/daily-monster/` | Five questions, 90-second timer, result review, leaderboard |
-| `/match-monster/` | Featured matches, five picks saved in the browser, resolved and leaderboard views |
+| `/feed/` | "From the stands": today's matches strip, posts with cricket type labels, applause, replies, share, report |
+| `/daily-monster/` | Intro with closing countdown, 90-second quiz with ball-dot progress, result with over summary and shareable score, podium leaderboard |
+| `/match-monster/` | Fixture cards, one-question-at-a-time picks with a team sheet, locked state, results breakdown, leaderboard |
 | `/profile/`, `/sign-in/`, `/admin/` | Account, email sign-in states, admin tools |
 
 There's no backend: posts, picks and scores are sample data and browser storage only.
@@ -23,7 +23,13 @@ Open http://localhost:8000/. Use a server rather than opening the HTML files dir
 States for review:
 
 - Feed error: `/feed/?state=error`
+- Feed empty: `/feed/?state=empty`
 - Feed signed out: `/feed/?guest`
+- Daily Monster leaderboard: `/daily-monster/?view=leaderboard`
+- Match picks (open): `/match-monster/?view=match&m=brc`
+- Match picks (locked): `/match-monster/?view=match&m=ind`
+- Match results: `/match-monster/?view=results`
+- Match leaderboard: `/match-monster/?view=leaderboard`
 - Sign-in link expired: `/sign-in/?state=expired`
 - Sign-in link invalid: `/sign-in/?state=invalid`
 
