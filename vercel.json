@@ -3,12 +3,28 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/feed",
+      "destination": "/feed/index.html"
+    },
+    {
+      "source": "/sign-in",
+      "destination": "/sign-in/index.html"
+    },
+    {
+      "source": "/profile",
+      "destination": "/profile/index.html"
+    },
+    {
       "source": "/match-monster",
       "destination": "/match-monster/index.html"
     },
     {
       "source": "/daily-monster",
       "destination": "/daily-monster/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
     }
   ],
   "headers": [
