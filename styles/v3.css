@@ -426,19 +426,20 @@ textarea.input { min-height: 140px; resize: vertical; }
 .podium-1 .podium-pos { color: var(--gold); }
 .podium-name { font-weight: 700; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .podium-score { font: 700 1.3rem var(--font-num); }
-.podium-score small, .dm-list small, .dm-me small { font-size: .75em; color: var(--muted); font-weight: 500; }
+.podium-score small, .dm-list small { font-size: .75em; color: var(--muted); font-weight: 500; }
 .podium-time { font-size: .82rem; color: var(--muted); }
 .podium-step { width: 100%; margin-top: 6px; border: 1px solid var(--line); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0; background: var(--surface); }
 .podium-1 .podium-step { height: 88px; border-top: 3px solid var(--gold); }
 .podium-2 .podium-step { height: 64px; border-top: 3px solid #b9c0bb; }
 .podium-3 .podium-step { height: 48px; border-top: 3px solid #b48a5a; }
 .dm-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.dm-list li, .dm-me { display: grid; grid-template-columns: 44px 1fr auto auto; align-items: center; gap: var(--space-3); min-height: 52px; padding: 0 var(--space-2); border-bottom: 1px solid var(--line); }
-.dm-list .pos, .dm-me .pos { font: 600 1rem var(--font-num); color: var(--muted); }
-.dm-list .time, .dm-me .time { font-size: .85rem; color: var(--muted); }
-.dm-list .pts, .dm-me .pts { font: 700 1.05rem var(--font-num); text-align: right; min-width: 64px; }
-.dm-me { position: sticky; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 8px); border: 1px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-3); box-shadow: var(--shadow); font-weight: 700; }
-.dm-me .pos { color: var(--text); }
+.dm-list li { display: grid; grid-template-columns: 44px 1fr auto auto; align-items: center; gap: var(--space-3); min-height: 52px; padding: 0 var(--space-2); border-bottom: 1px solid var(--line); }
+.dm-list .pos { font: 600 1rem var(--font-num); color: var(--muted); }
+.dm-list .time { font-size: .85rem; color: var(--muted); }
+.dm-list .pts { font: 700 1.05rem var(--font-num); text-align: right; min-width: 64px; }
+.dm-list li.is-me { margin: 4px 0; border: 1px solid var(--tan); border-radius: var(--radius-md); background: var(--surface-2); font-weight: 700; }
+.dm-list li.is-me .pos { color: var(--tan); }
+.dm-list li.gap { min-height: 32px; display: flex; justify-content: center; color: var(--muted); letter-spacing: .3em; }
 /* Generic table used by other leaderboards */
 .leaderboard-tabs { display: flex; gap: 8px; margin: 20px 0; overflow-x: auto; scrollbar-width: none; }
 .leaderboard { width: 100%; border-collapse: collapse; }
@@ -455,7 +456,8 @@ textarea.input { min-height: 140px; resize: vertical; }
 .mm-head p { margin: 0; max-width: 56ch; color: var(--text-2); }
 .match-tabs { max-width: 100%; display: flex; gap: 4px; margin-bottom: var(--space-5); padding: 4px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); overflow-x: auto; scrollbar-width: none; }
 .match-tabs::-webkit-scrollbar { display: none; }
-.match-tabs .chip { border-color: transparent; border-radius: var(--radius-sm); }
+.match-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.match-tabs .chip { justify-content: center; min-width: 0; padding-inline: 6px; border-color: transparent; border-radius: var(--radius-sm); font-size: .9rem; white-space: nowrap; }
 .match-tabs .chip.active { background: var(--surface-3); color: var(--text); border-color: var(--line-strong); }
 .mm-list { display: grid; gap: var(--space-3); }
 /* Fixture card: team colours on the top edge */
@@ -632,7 +634,8 @@ textarea.input { min-height: 140px; resize: vertical; }
   .quiz-nav .btn { width: auto; min-width: 140px; }
   .leaderboard th, .leaderboard td { padding: 13px 15px; }
 
-  .match-tabs { width: fit-content; }
+  .match-tabs { width: fit-content; grid-template-columns: repeat(4, auto); }
+  .match-tabs .chip { padding-inline: 16px; font-size: 1rem; }
   .mm-list { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   .mm-bug { display: inline-grid; }
   .mm-layout { grid-template-columns: minmax(0, 1fr) 320px; }

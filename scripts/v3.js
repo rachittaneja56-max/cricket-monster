@@ -5,6 +5,18 @@
 
   const params = new URLSearchParams(location.search);
   const isGuest = params.has('guest');
+  // Leaderboard rows from 4th place down. "You" sits at its real rank: inside the list
+  // when it falls there (others shift down), otherwise after a gap row at the end.
+  const rankRows = (board, row) => {
+    const [rank, score, time] = board.me;
+    const rows = board.rows.map(([name, s, t]) => [name, s, t, false]);
+    const me = ['You · Arjun K.', score, time, true];
+    const inList = rank <= rows.length + 1;
+    if (inList) rows.splice(rank - 1, 0, me);
+    let html = rows.slice(3).map(([name, s, t, isMe], i) => row(i + 4, name, s, t, isMe)).join('');
+    if (!inList) html += `<li class="gap" aria-hidden="true"><span>···</span></li>` + row(rank, ...me);
+    return html;
+  };
   const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const formatCount = (n) => (n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'K' : String(n));
 
@@ -514,9 +526,8 @@
       const pts = (n) => `${n}${board.unit === '/50' ? '<small>/50</small>' : '<small> pts</small>'}`;
       const [first, second, third] = board.rows;
       $('#dmPodium').innerHTML = [[2, second], [1, first], [3, third]].map(([pos, [name, score, time]]) => `<li class="podium-${pos}"><span class="podium-pos num">${pos}</span><span class="podium-name">${name}</span><span class="podium-score num">${pts(score)}</span>${time ? `<span class="podium-time num">${time}</span>` : ''}<span class="podium-step"></span></li>`).join('');
-      $('#dmList').innerHTML = board.rows.slice(3).map(([name, score, time], i) => `<li><span class="pos num">${i + 4}</span><span>${name}</span>${time ? `<span class="time num">${time}</span>` : '<span></span>'}<span class="pts num">${pts(score)}</span></li>`).join('');
-      const [rank, score, time] = board.me;
-      $('#dmMe').innerHTML = `<span class="pos num">#${rank}</span><span>You · Arjun K.</span>${time ? `<span class="time num">${time}</span>` : '<span></span>'}<span class="pts num">${pts(score)}</span>`;
+      const row = (pos, name, score, time, me) => `<li${me ? ' class="is-me" aria-current="true"' : ''}><span class="pos num">${pos}</span><span>${name}</span>${time ? `<span class="time num">${time}</span>` : '<span></span>'}<span class="pts num">${pts(score)}</span></li>`;
+      $('#dmList').innerHTML = rankRows(board, row);
       $('#dmBoardNote').textContent = board.note;
     };
     $$('[data-period]').forEach((chip) => chip.addEventListener('click', () => {
@@ -709,8 +720,8 @@
       const pts = (n) => `${n}<small> pts</small>`;
       const [first, second, third] = board.rows;
       $('#mmPodium').innerHTML = [[2, second], [1, first], [3, third]].map(([pos, [name, score]]) => `<li class="podium-${pos}"><span class="podium-pos num">${pos}</span><span class="podium-name">${name}</span><span class="podium-score num">${pts(score)}</span><span class="podium-step"></span></li>`).join('');
-      $('#mmRankList').innerHTML = board.rows.slice(3).map(([name, score], i) => `<li><span class="pos num">${i + 4}</span><span>${name}</span><span></span><span class="pts num">${pts(score)}</span></li>`).join('');
-      $('#mmMe').innerHTML = `<span class="pos num">#${board.me[0]}</span><span>You · Arjun K.</span><span></span><span class="pts num">${pts(board.me[1])}</span>`;
+      const row = (pos, name, score, time, me) => `<li${me ? ' class="is-me" aria-current="true"' : ''}><span class="pos num">${pos}</span><span>${name}</span><span></span><span class="pts num">${pts(score)}</span></li>`;
+      $('#mmRankList').innerHTML = rankRows(board, row);
       $('#mmBoardNote').textContent = board.note;
     };
     $$('[data-scope]').forEach((chip) => chip.addEventListener('click', () => {
