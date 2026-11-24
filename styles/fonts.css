@@ -1,11 +1,12 @@
 /* Self-hosted fonts, one per role (latin subset, woff2, from Fontsource).
-   Display: Barlow Condensed · UI: Source Sans 3 · Numbers: Barlow Semi Condensed
-   Licences: assets/fonts/Barlow-OFL.txt, assets/fonts/SourceSans3-OFL.txt */
+   One family: Barlow Condensed (display) · Barlow (UI and body) · Barlow Semi Condensed (numbers)
+   Licence: assets/fonts/Barlow-OFL.txt */
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/barlow-condensed-latin-700-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/barlow-condensed-latin-800-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Barlow Semi Condensed'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/barlow-semi-condensed-latin-500-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Barlow Semi Condensed'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/barlow-semi-condensed-latin-600-normal.woff2) format('woff2'); }
 @font-face { font-family: 'Barlow Semi Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/barlow-semi-condensed-latin-700-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Source Sans 3'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/source-sans-3-latin-400-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Source Sans 3'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/source-sans-3-latin-600-normal.woff2) format('woff2'); }
-@font-face { font-family: 'Source Sans 3'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/source-sans-3-latin-700-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow'; font-style: normal; font-weight: 400; font-display: swap; src: url(/assets/fonts/barlow-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow'; font-style: normal; font-weight: 500; font-display: swap; src: url(/assets/fonts/barlow-latin-500-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow'; font-style: normal; font-weight: 600; font-display: swap; src: url(/assets/fonts/barlow-latin-600-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Barlow'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/barlow-latin-700-normal.woff2) format('woff2'); }

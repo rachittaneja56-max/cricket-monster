@@ -38,12 +38,12 @@ States for review:
 Mobile first: designed at 375px, with layouts added at 768px and 1024px. A bottom tab bar on phones, top navigation on desktop. Touch targets are at least 44px, with visible focus outlines and reduced-motion support.
 
 - **Colours ("Floodlit night"):** near-black green background, floodlight-white text, ball red only for main buttons and live labels, pitch tan as an accent. Tokens are at the top of `styles/v3.css`.
-- **Fonts, one per role,** self-hosted in `assets/fonts/`:
+- **Fonts: one family (Barlow), one width per role,** self-hosted in `assets/fonts/`:
 
   | Role | Font | Token |
   |---|---|---|
   | Display (headlines) | Barlow Condensed | `--font-display` |
-  | UI and body | Source Sans 3 | `--font-ui` |
+  | UI and body | Barlow | `--font-ui` |
   | Numbers (scores, timers, ranks) | Barlow Semi Condensed, tabular figures | `--font-num` |
 
 - **Footage:** real Pexels recordings only. Credits are in the homepage footer; licence notes are in `tools/hero-motion/FOOTAGE-LICENSES.md`.
